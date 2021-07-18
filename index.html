@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest Truck</title>
+
+    <!-- 重置 -->
+    <link rel="stylesheet" href="reset.css" />
+    <!-- bootstrap 4.6.0 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <!-- 小圖示 -->
+    <script
+      src="https://kit.fontawesome.com/271f30e909.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 動畫 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <!-- text menu -->
+    <link rel="stylesheet" href="text menu.css" />
+    <!-- text card -->
+    <link rel="stylesheet" href="text card.css" />
+    <style>
+      body {
+        background-color: #fffdfa;
+        color: rgb(146, 32, 8);
+        font-family: "Noto Sans TC", sans-serif;
+      }
+      a {
+        color: rgb(146, 32, 8) !important;
+      }
+      .tac {
+        text-align: center;
+      }
+      .aic {
+        align-items: center;
+      }
+      /* nav */
+      .navbgcolor {
+        transition: 0.5s;
+      }
+
+      .hide_nav {
+        transform: translateY(-88px);
+      }
+
+      .navbgcolor:hover {
+        transform: none;
+      }
+      .navbar-nav .nav-item:hover {
+        border-bottom: 1px solid;
+        transition: 0.5s;
+      }
+      .LOGOresttruck img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .navbgcolor {
+        background: #fff;
+        position: fixed;
+        right: 0;
+        border-radius: 0 0 30px 30px;
+        z-index: 99;
+        padding: 0.5rem 1rem;
+      }
+
+      .logomg {
+        margin-right: 20px;
+      }
+
+      .nav-item {
+        cursor: pointer;
+      }
+
+      .nav-item a {
+        color: rgb(146, 32, 8);
+        font-size: 20px;
+      }
+
+      /* page_1 */
+      .wrap {
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .img-wrap {
+        width: 500%;
+        height: 100vh;
+        position: absolute;
+        left: 0;
+        transition: 0.5s;
+        overflow: hidden;
+      }
+
+      .img-wrap li {
+        /* 由於輪播牆是使用Flex橫向5張圖 遇到圖有大有小 需要靠flex-grow basis shrink個別調整比例讓5張圖 都以1:1:1:1:1呈現 */
+        flex-grow: 1;
+        flex-basis: 0;
+        flex-shrink: 0;
+      }
+
+      .img-wrap img {
+        width: 100%;
+        height: 100vh;
+        /* 上方已設定好大小比例 */
+        /* 填滿元素的寬度及高度(維持原比例)，通常會剪掉部分的物件 */
+        object-fit: cover;
+      }
+
+      .slider-dots {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        list-style-type: none;
+        justify-content: center;
+      }
+
+      .slider-dots li {
+        width: 10px;
+        height: 10px;
+        margin: 0 10px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+      }
+
+      /* restbar */
+      .restbar {
+        text-align: center;
+        padding: 100px 0 100px 0;
+      }
+
+      .restbar_ye {
+        background-color: rgb(249, 237, 220);
+      }
+
+      /* page 2 */
+
+      .page2_bgimg {
+        background-image: url(/img/pexels-photo-5794160.jpeg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 100%;
+        /* height: 100vh; */
+        padding: 20% 8%;
+        position: relative;
+      }
+      .page2_card {
+        align-items: center;
+        justify-content: space-between;
+        max-width: 992px;
+        margin: auto;
+      }
+      .page_2_content {
+        background: #f5f5f5c7;
+        border-radius: 10px;
+        padding: 2%;
+        line-height: 2.5rem;
+        font-size: 18px;
+        transition: all 0.8s cubic-bezier(0.18, 0.89, 0.15, 0.96);
+      }
+      .page_2_content:hover {
+        transform: scale(1.2, 1.2);
+        transition: all 0.5s cubic-bezier(0.18, 0.89, 0.15, 0.96);
+        box-shadow: 0px 13px 10px -7px rgb(0 0 0 / 10%);
+
+        /* -webkit-transition: all 0.5s ease 0s;
+        -moz-transition: all 0.5s ease 0s;
+        -o-transition: all 0.5s ease 0s; */
+      }
+
+      .h5b {
+        font-weight: bold;
+      }
+
+      /* page3 */
+
+      .page3_bigcard_img img {
+        width: 100%;
+      }
+      .page3_bigcard_img {
+        position: relative;
+      }
+      /* after白色遮罩 */
+      .page3_bigcard_img:after {
+        content: "";
+        position: absolute;
+        background: #fff;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        transition: all 1.25s ease-in-out;
+        transform-origin: right;
+      }
+      .page3_bigcard_img.animatemo:after {
+        -webkit-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+        transform: scaleX(0);
+      }
+      .page3 {
+        max-width: 1440px;
+        margin: 0 auto;
+      }
+
+      .page3_bigcd {
+        position: relative;
+        width: calc(50% - 20px);
+        margin: 100px 0 0;
+        transition: 1s;
+        transition-duration: 2s;
+        transition-delay: 0.5s;
+        opacity: 0;
+        transform: translate3d(0, 50px, 0);
+      }
+
+      .page3_flex {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .page3_title {
+        font-size: 2.5rem;
+        letter-spacing: 3px;
+        margin: 20px 0;
+      }
+
+      .page3_textp {
+        line-height: 2.2rem;
+      }
+
+      .Titlewords {
+        bottom: auto;
+        left: auto;
+        position: absolute;
+        z-index: 1;
+
+        font-size: 300px;
+        line-height: 1;
+        right: 40px;
+        top: -100px;
+      }
+
+      .mgbot {
+        margin-bottom: 100px;
+      }
+
+      .cardain {
+        opacity: 0;
+        transition: 2s;
+        transition-duration: 1s;
+        transition-delay: 0.5s;
+      }
+
+      /* page4 */
+      .page_4 {
+        margin-top: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .clickmenu {
+        margin: auto;
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translate(-50%, -41%);
+        font-size: 35rem;
+      }
+      .right-side .front .part-one p {
+        color: black;
+        margin: 0px;
+        font-size: 13px;
+      }
+
+      /* page5 */
+      .mapimage {
+        margin: 0 auto;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+      }
+
+      .messagepd {
+        padding: 50px;
+      }
+
+      /* page6 */
+      .page6 {
+        position: relative;
+      }
+
+      .page6_bgimg {
+        width: 100%;
+        background: url(./img/UC8A2123\ EX.jpg) center center no-repeat;
+        background-size: cover;
+        height: 80vh;
+        opacity: 0.8;
+      }
+
+      .whitebox {
+        background-color: #fff;
+        opacity: 0.9;
+        border-radius: 10px;
+        margin: auto;
+        padding: 15px;
+        z-index: 5;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .whitebox_1 {
+        padding: 3% 6%;
+      }
+      .leftpad {
+        padding-left: 1%;
+      }
+      .page6box {
+        align-items: center;
+        padding-bottom: 3%;
+      }
+      .btnsty {
+        justify-content: center;
+        padding-top: 3%;
+      }
+
+      /* footer */
+
+      .footerpad {
+        padding: 2%;
+        font-size: 12px;
+        display: flex;
+      }
+      .ftmess {
+        width: 100%;
+      }
+      /* 桌機 */
+      @media (min-width: 992px) {
+        .df {
+          display: flex;
+        }
+        .iconpos {
+          display: flex;
+          align-items: center;
+        }
+        .page2_card {
+          display: flex;
+        }
+        .cards {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          /* flex-wrap: wrap; */
+          padding: 0 50px 50px 50px;
+        }
+        .page3_mgtp1 {
+          margin-top: calc(20% + 150px);
+        }
+        .card {
+          /*
+            min width = 300
+    max width = 600 
+  */
+          width: calc(300px + (600 - 300) * ((100vw - 576px) / (1400 - 576)));
+        }
+      }
+
+      /* 手機 */
+      @media (max-width: 992px) {
+        .navbgcolor {
+          width: 100%;
+        }
+        .page3_bigcd {
+          width: 100%;
+        }
+        .df_md {
+          display: flex;
+        }
+        .Titlewords {
+          font-size: 200px;
+          line-height: 1;
+          bottom: auto;
+          left: auto;
+          right: 40px;
+          top: -100px;
+          z-index: 1;
+        }
+        .iconpos {
+          display: grid;
+        }
+        .page2_card {
+          text-align: center;
+        }
+        .page_2_content {
+          margin-bottom: 7%;
+          padding: 8%;
+        }
+        .page3_mgtp1 {
+          margin-top: 100px 0 0;
+        }
+        .mgbot {
+          padding: 0 8%;
+        }
+        .card {
+          margin-bottom: 10%;
+        }
+        .menu {
+          display: none;
+        }
+        .mapsize_md {
+          height: 300px;
+        }
+        .messagepd {
+          padding: 10px;
+        }
+        .page6box {
+          padding-bottom: 6%;
+        }
+        .btnsty {
+          justify-content: space-evenly;
+        }
+        .page6_bgimg {
+          height: 90vh;
+        }
+        .footerpad {
+          padding: 6% 2%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- navbar -->
+
+    <nav class="navbar-expand-lg navbgcolor">
+      <ul class="nav d-flex justify-content-between aic">
+        <li id="navberLogoFast" class="nav-item logomg">
+          <a class="LOGOresttruck"> <img src="img/資產 1.svg" /></a>
+        </li>
+        <!-- 漢堡 -->
+        <div
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="25"
+            height="20"
+            viewBox="0 0 25 20"
+          >
+            <g
+              id="Group_135"
+              data-name="Group 135"
+              transform="translate(-341.5 -1313.5)"
+            >
+              <line
+                id="Line_50"
+                data-name="Line 50"
+                x2="23"
+                transform="translate(342.5 1314.5)"
+                fill="none"
+                stroke="#707070"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <line
+                id="Line_51"
+                data-name="Line 51"
+                x2="23"
+                transform="translate(342.5 1323.5)"
+                fill="none"
+                stroke="#707070"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+              <line
+                id="Line_52"
+                data-name="Line 52"
+                x2="23"
+                transform="translate(342.5 1332.5)"
+                fill="none"
+                stroke="#707070"
+                stroke-linecap="round"
+                stroke-width="2"
+              />
+            </g>
+          </svg>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <div class="navbar-nav">
+            <li class="nav-item">
+              <a id="menu01" class="nav-link">簡介</a>
+            </li>
+            <li class="nav-item">
+              <a id="menu02" class="nav-link">特色</a>
+            </li>
+            <li class="nav-item">
+              <a id="menu03" class="nav-link">菜單</a>
+            </li>
+            <li class="nav-item">
+              <a id="menu04" class="nav-link">連絡我們</a>
+            </li>
+          </div>
+        </div>
+      </ul>
+    </nav>
+
+    <!-- page 1 -->
+    <div id="page1_pot" class="wrap">
+      <!-- 輪播照片 -->
+      <ul class="d-flex img-wrap">
+        <li><img src="img/UC8A1882-HDR-1.jpg" alt="" /></li>
+        <li><img src="./img/UC8A2091.jpg" alt="" /></li>
+        <li><img src="./img/UC8A1864.jpg" alt="" /></li>
+        <li><img src="./img/780424960fd5ea054765e1f01e5ccd1c.jpg" alt="" /></li>
+        <li><img src="./img/pexels-photo-5908060.jpeg" alt="" /></li>
+      </ul>
+
+      <!-- 白色小點 -->
+      <ul class="slider-dots">
+        <!-- 下方jQuery導讀(從0開始計算 0~) -->
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- restbar -->
+    <div class="">
+      <div class="restbar">
+        <h3>古樸寧靜的氣氛</h3>
+      </div>
+    </div>
+
+    <!-- page 2 -->
+    <div class="page2_bgimg" id="page2_pot">
+      <div class="page2_card move1">
+        <div class="page_2_content">
+          <h5 class="h5b">2013年</h5>
+          <p>
+            Run Truck誕生<br />
+            以快餐車餐飲為主要經營，<br />
+            環遊各地，不定時移動，<br />
+            提供美式特色餐點，<br />
+            身在遠處的你，<br />
+            也能品嘗到道地的美味。<br />
+          </p>
+        </div>
+        <div class="page_2_content">
+          <h5 class="h5b">2016~2019年</h5>
+          <p>
+            Run謝幕，<br />
+            Rest誕生，<br />
+            轉型美式餐廳，<br />
+            以親切服務與多樣化的選擇，<br />
+            打造一個與家人、朋友、同事<br />
+            歡聚時的舒適空間。
+          </p>
+        </div>
+
+        <div class="page_2_content">
+          <h5 class="h5b">新址落成</h5>
+          <p>
+            新與舊<br />
+            兩者的碰撞，營造出新感動，<br />
+            舊的懷念，<br />
+            新的刺激，<br />
+            兩者兼顧，雙重享受，<br />
+            創造更多與異人館的歡樂回憶。
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- restbar -->
+    <div class="">
+      <div class="restbar" id="page3_pot">
+        <h3>
+          秉持純淨手工製作<br />
+          帶來最深的感動
+        </h3>
+      </div>
+    </div>
+
+    <!-- page 3 -->
+
+    <div class="page3">
+      <div class="mgbot">
+        <div class="page3_flex">
+          <div class="page3_bigcd page3_ain">
+            <div class="page3_bigcard_img">
+              <img src="./img/pexels-photo-784632.jpeg" />
+            </div>
+            <div class="page3_title">純淨工法</div>
+            <div class="page3_textp">
+              用時間去等待小麥與酵母自然的醞釀與熟成，更沒有花俏的外型，<br />
+              為的就是要讓麵包真正做到「好吃」，<br />
+              回歸烘培初衷，並融入烘培的豐富創新與固執。
+            </div>
+            <div class="Titlewords">
+              <div class="titleword_1">
+                <div class="word">
+                  <font>P</font>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="page3_bigcd page3_mgtp1 page3_ain2">
+            <div class="page3_bigcard_img">
+              <img src="./img/pexels-photo-6642487 EX.jpg" />
+            </div>
+            <div class="page3_title">美味安心</div>
+            <div class="page3_textp">
+              從新鮮、豐盛到季節嚴選，Rest
+              Truck提供最優質的食材為原則，供應美式美味料理，寬敞舒適的用餐空間，定時提供限定活動，更添趣味！
+            </div>
+            <div class="Titlewords">
+              <div class="titleword_1">
+                <div class="word">
+                  <font>T</font>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- restbar -->
+    <div class="">
+      <div class="restbar restbar_ye move2">
+        <h3>菜單</h3>
+      </div>
+    </div>
+
+    <!-- page4 -->
+
+    <div class="page_4" id="page4_pot">
+      <div class="clickmenupack">
+        <div class="clickmenu">CLICK</div>
+      </div>
+      <div class="menu" id="menu">
+        <div class="menuopen">
+          <!-- textmenu -->
+          <div class="container_1" id="one">
+            <div class="left-side">
+              <!-- 內頁1 -->
+              <div class="front">
+                <div class="content">
+                  <div class="part-one">
+                    <h1>三明治系列</h1>
+                    <br />
+                    <p>
+                      鮪魚蛋沙拉三明治
+                      <br />..........................................................$487
+                    </p>
+                    <p>
+                      德腸美式煎蛋三明治
+                      <br />..........................................................$487
+                    </p>
+                  </div>
+                  <div class="part-two">
+                    <h1>美式漢堡系列</h1>
+                    <br />
+                    <p>
+                      美式炭烤豬肋堡 (台灣豬)
+                      <br />..........................................................$487
+                    </p>
+                    <p>
+                      德州辣味起司球漢堡
+                      <br />..........................................................$487
+                    </p>
+                    <p>
+                      達拉斯菲力牛堡 (澳洲牛)
+                      <br />..........................................................$487
+                    </p>
+                    <p>
+                      安格斯黑牛堡 (澳洲牛)<br />..........................................................$487
+                    </p>
+                    <p>
+                      嫩烤鮭魚排
+                      <br />..........................................................$487
+                    </p>
+                    <p>
+                      飛天鱈魚堡
+                      <br />..........................................................$487
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- 第二目  -->
+              <div class="back">
+                <div class="content">
+                  <img
+                    class="left-image"
+                    src="img/233b4ca098a8f00375a73859bdff8748 EXX.jpg"
+                    alt="empire state building"
+                  />
+                  <div class="stuff">
+                    <div>$487</div>
+                    <div>2人套餐</div>
+                    <p>
+                      德腸美式煎蛋三明治
+                      <br />
+                      安格斯黑牛堡 (澳洲牛)
+                      <br />
+                      ...........................................<br />
+                      精選炸物<br />...........................................<br />
+                      肥宅快樂水(紅)<br />
+                      巧克力奶昔
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="center">
+              <!-- 內頁2 -->
+              <div class="center-content content">
+                <div class="part-one fontcolorblack">
+                  <h1>超值套餐</h1>
+                  <br />
+                  <p>
+                    輕食分享餐
+                    <br />..........................................................$487
+                  </p>
+                  <p>
+                    午下時光分享餐<br />..........................................................$487
+                  </p>
+                  <p>
+                    94分享餐<br />..........................................................$487
+                  </p>
+                  <p>
+                    肥宅分享餐<br />..........................................................$487
+                  </p>
+                </div>
+
+                <div class="part-two fontcolorblack">
+                  <br />
+
+                  <br />
+
+                  <h1>飲料系列</h1>
+                  <br />
+                  <p>
+                    肥宅快樂水(綠)
+                    <br />........................................................$487
+                  </p>
+                  <p>
+                    肥宅快樂水(紅)
+                    <br />........................................................$487
+                  </p>
+                  <p>
+                    紅茶
+                    <br />........................................................$487
+                  </p>
+                  <p>
+                    美式咖啡
+                    <br />........................................................$487
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="right-side">
+              <!-- 內頁 右邊 -->
+              <div class="front">
+                <div class="content">
+                  <div class="part-one">
+                    <img
+                      class="right-image"
+                      src="img/a2c2ce36a7e71a9dad3b3d19440c30fd MAX.jpg"
+                      alt="empire state building"
+                    />
+                  </div>
+                  <div class="part-two">
+                    <div class="stuff">
+                      <br /><br /><br /><br />
+                      <p>
+                        拿鐵<br />.............................................................$487
+                      </p>
+                      <p>
+                        巧克力奶昔<br />.............................................................$487
+                      </p>
+                      <p>
+                        每日精選特調<br />.............................................................$487
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                ㄠ
+              </div>
+              <div class="back">
+                <div class="content">
+                  <!-- <img class="right-image"
+                                    src="https://image.freepik.com/free-photo/grayscale-shot-empire-state-building-new-usa_181624-12153.jpg"
+                                    alt="empire state building"> -->
+                  <img
+                    class="right-image"
+                    src="img/text EX.jpg"
+                    alt="empire state building"
+                  />
+                  <div class="bottom">
+                    <div class="text">welcome!</div>
+                    <div class="highlight">Rest Truck</div>
+                    <div class="text">菜單</div>
+                    <div class="blurb">
+                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                      Minima amet facere sed pariatur cupiditate saepe at
+                      molestiae tempore iure veritatis.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menucard">
+        <section class="cards">
+          <article class="card card--1 marginbutton cardain">
+            <div class="card__img"></div>
+            <a href="#" class="card_link">
+              <div class="card__img--hover"></div>
+            </a>
+            <div class="card__info">
+              <span class="card__category">清爽口碑</span>
+              <h3 class="card__title">三明治系列</h3>
+              <span class="card__by">
+                <a href="#" class="card__author" title="author"
+                  >Sandwich</a
+                ></span
+              >
+            </div>
+          </article>
+
+          <article class="card card--2 marginbutton cardain">
+            <div class="card__img"></div>
+            <a href="#" class="card_link">
+              <div class="card__img--hover"></div>
+            </a>
+            <div class="card__info">
+              <span class="card__category"> 經典不敗</span>
+              <h3 class="card__title">美式漢堡系列</h3>
+              <span class="card__by">
+                <a href="#" class="card__author" title="author"
+                  >Hamburger</a
+                ></span
+              >
+            </div>
+          </article>
+          <article class="card card--3 marginbutton cardain">
+            <div class="card__img"></div>
+            <a href="#" class="card_link">
+              <div class="card__img--hover"></div>
+            </a>
+            <div class="card__info">
+              <span class="card__category"> 超值享受</span>
+              <h3 class="card__title">精選超值套餐系列</h3>
+              <span class="card__by">
+                <a href="#" class="card__author" title="author"
+                  >Value Meals</a
+                ></span
+              >
+            </div>
+          </article>
+          <article class="card card--4 marginbutton cardain">
+            <div class="card__img"></div>
+            <a href="#" class="card_link">
+              <div class="card__img--hover"></div>
+            </a>
+            <div class="card__info">
+              <span class="card__category"> 休閒時光</span>
+              <h3 class="card__title">飲料系列</h3>
+              <span class="card__by">
+                <a href="#" class="card__author" title="author">Drink</a></span
+              >
+            </div>
+          </article>
+        </section>
+      </div>
+    </div>
+
+    <!-- restbar -->
+    <div class="">
+      <div class="restbar">
+        <h3>交通資訊</h3>
+      </div>
+    </div>
+
+    <!--  ~~~~~~~~~~~~~~~~  page5 -->
+    <div class="">
+      <div class="df col">
+        <div class="mapimage mapsize_md col col-lg-5">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d903.7543887261062!2d121.54324114081022!3d25.033478307359474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x952a88ba2894f51!2z6Ie654Gj5LyB6YqAIOW-qeiIiOWIhuihjA!5e0!3m2!1szh-TW!2stw!4v1615386860612!5m2!1szh-TW!2stw"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+
+        <div class="col col-lg-5">
+          <div class="message col d-flex messagepd">
+            <div class="col col-lg-3">地址</div>
+            <div class="col">106台北市大安區復興南路一段390號</div>
+          </div>
+          <div class="col d-flex messagepd">
+            <div class="col col-lg-3">電話</div>
+            <div class="col">02-6666-6666</div>
+          </div>
+          <div class="col d-flex messagepd">
+            <div class="col col-lg-3">營業時間</div>
+            <div class="col">09:00~21:00 周一公休</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- restbar -->
+    <div class="">
+      <div class="restbar">
+        <h3>定位預約</h3>
+      </div>
+    </div>
+
+    <!-- page6 -->
+
+    <div class="page6" id="page5_pot">
+      <!-- 背景 -->
+      <div class="page6_bgimg"></div>
+      <!-- 白色箱子 -->
+      <div class="col-lg-5 whitebox">
+        <div class="whitebox_1">
+          <!-- 標題集合 -->
+          <div class="">
+            <h1><strong>訂位在這!</strong></h1>
+            <div class="col">
+              <p>
+                可接受 2-8 位訂位（含大人與小孩） * 超過 8
+                人的訂位，請使用電話預約
+              </p>
+            </div>
+          </div>
+          <!--輸入組合全 -->
+          <div class="">
+            <!-- 輸入組合局部 -->
+            <div class="df page6box">
+              <div class="col">日期</div>
+              <div class="col">
+                <input class="form-control" type="date" id="nowDoday" />
+              </div>
+            </div>
+
+            <div class="df page6box">
+              <div class="col">時段</div>
+              <div class="col">
+                <select class="form-control" id="fastTime">
+                  <option value="11:00">11:00</option>
+                  <option value="12:00">12:00</option>
+                  <option value="13:00">13:00</option>
+                  <option value="14:00">14:00</option>
+                  <option value="15:00">15:00</option>
+                  <option value="16:00">16:00</option>
+                  <option value="17:00">17:00</option>
+                  <option value="18:00">18:00</option>
+                  <option value="19:00">19:00</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="df page6box">
+              <div class="col">人數</div>
+              <div class="col">
+                <select class="form-control" id="fastPeople">
+                  <option value="2人">2人</option>
+                  <option value="3人">3人</option>
+                  <option value="4人">4人</option>
+                  <option value="5人">5人</option>
+                  <option value="6人">6人</option>
+                  <option value="7人">7人</option>
+                  <option value="8人">8人</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="df page6box">
+              <div class="col">姓名</div>
+              <div class="col">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="fastName"
+                  aria-describedby="emailHelp"
+                  placeholder="Name"
+                />
+              </div>
+            </div>
+
+            <div class="df page6box">
+              <div class="col">電話</div>
+              <div class="col">
+                <input
+                  type="email"
+                  class="form-control"
+                  id="fastPhone"
+                  aria-describedby="emailHelp"
+                  placeholder="Phone Number"
+                />
+              </div>
+            </div>
+          </div>
+          <!-- 按鈕 -->
+          <div class="d-flex btnsty">
+            <div class="">
+              <button
+                type="button"
+                id="buttonFast"
+                class="btn btn-secondary btn-lg"
+              >
+                快速輸入
+              </button>
+            </div>
+            <div class="leftpad">
+              <button
+                type="button"
+                id="buttonOK"
+                class="btn btn-primary btn-lg buttonOK"
+              >
+                確定
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="restbar_ye">
+      <!-- 資訊+icon -->
+      <div class="footerpad">
+        <!-- 資訊 -->
+        <div class="df ftmess">
+          <div class="col df_md">
+            <div class="col-5">
+              <p>聯絡我們</p>
+            </div>
+            <ul class="col">
+              <li>02-6666-6666</li>
+              <li>
+                <a
+                  href="mailto:support@tsunamiworks.com"
+                  class="page6left_number"
+                  >contactus@gmail.com</a
+                >
+              </li>
+              <li>
+                <a href="" class="">找到Rest Truck</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col df_md">
+            <div class="col-5">
+              <p>服務</p>
+            </div>
+            <ul class="col">
+              <li>
+                <a href="" class="">首頁</a>
+              </li>
+              <li>
+                <a href="" class="">簡介</a>
+              </li>
+
+              <li>
+                <a href="" class="">訂位預約</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col df_md">
+            <div class="col-5">
+              <p>訊息</p>
+            </div>
+            <ul class="col">
+              <li>
+                <a href="" class="">簡介</a>
+              </li>
+              <li>
+                <a href="" class="">菜單</a>
+              </li>
+              <li>
+                <a
+                  href="https://ifoodie.uservoice.com/knowledgebase/articles/435347"
+                  class=""
+                  >隱私政策</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://ifoodie.uservoice.com/knowledgebase/articles/807897"
+                  class=""
+                  >服務條款</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col iconpos">
+          <a class="LOGOicon col">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <title>facebook2</title>
+              <path
+                fill="rgb(146, 32, 8)"
+                d="M29 0h-26c-1.65 0-3 1.35-3 3v26c0 1.65 1.35 3 3 3h13v-14h-4v-4h4v-2c0-3.306 2.694-6 6-6h4v4h-4c-1.1 0-2 0.9-2 2v2h6l-1 4h-5v14h9c1.65 0 3-1.35 3-3v-26c0-1.65-1.35-3-3-3z"
+              ></path>
+            </svg>
+          </a>
+
+          <a class="LOGOicon col">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <title>twitter1</title>
+              <path
+                fill="rgb(146, 32, 8)"
+                d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"
+              ></path>
+            </svg>
+          </a>
+          <a class="LOGOicon col">
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <title>instagram</title>
+              <path
+                fill="rgb(146, 32, 8)"
+                d="M16 2.881c4.275 0 4.781 0.019 6.462 0.094 1.563 0.069 2.406 0.331 2.969 0.55 0.744 0.288 1.281 0.638 1.837 1.194 0.563 0.563 0.906 1.094 1.2 1.838 0.219 0.563 0.481 1.412 0.55 2.969 0.075 1.688 0.094 2.194 0.094 6.463s-0.019 4.781-0.094 6.463c-0.069 1.563-0.331 2.406-0.55 2.969-0.288 0.744-0.637 1.281-1.194 1.837-0.563 0.563-1.094 0.906-1.837 1.2-0.563 0.219-1.413 0.481-2.969 0.55-1.688 0.075-2.194 0.094-6.463 0.094s-4.781-0.019-6.463-0.094c-1.563-0.069-2.406-0.331-2.969-0.55-0.744-0.288-1.281-0.637-1.838-1.194-0.563-0.563-0.906-1.094-1.2-1.837-0.219-0.563-0.481-1.413-0.55-2.969-0.075-1.688-0.094-2.194-0.094-6.463s0.019-4.781 0.094-6.463c0.069-1.563 0.331-2.406 0.55-2.969 0.288-0.744 0.638-1.281 1.194-1.838 0.563-0.563 1.094-0.906 1.838-1.2 0.563-0.219 1.412-0.481 2.969-0.55 1.681-0.075 2.188-0.094 6.463-0.094zM16 0c-4.344 0-4.887 0.019-6.594 0.094-1.7 0.075-2.869 0.35-3.881 0.744-1.056 0.412-1.95 0.956-2.837 1.85-0.894 0.888-1.438 1.781-1.85 2.831-0.394 1.019-0.669 2.181-0.744 3.881-0.075 1.713-0.094 2.256-0.094 6.6s0.019 4.887 0.094 6.594c0.075 1.7 0.35 2.869 0.744 3.881 0.413 1.056 0.956 1.95 1.85 2.837 0.887 0.887 1.781 1.438 2.831 1.844 1.019 0.394 2.181 0.669 3.881 0.744 1.706 0.075 2.25 0.094 6.594 0.094s4.888-0.019 6.594-0.094c1.7-0.075 2.869-0.35 3.881-0.744 1.050-0.406 1.944-0.956 2.831-1.844s1.438-1.781 1.844-2.831c0.394-1.019 0.669-2.181 0.744-3.881 0.075-1.706 0.094-2.25 0.094-6.594s-0.019-4.887-0.094-6.594c-0.075-1.7-0.35-2.869-0.744-3.881-0.394-1.063-0.938-1.956-1.831-2.844-0.887-0.887-1.781-1.438-2.831-1.844-1.019-0.394-2.181-0.669-3.881-0.744-1.712-0.081-2.256-0.1-6.6-0.1v0z"
+              ></path>
+              <path
+                fill="rgb(146, 32, 8)"
+                d="M16 7.781c-4.537 0-8.219 3.681-8.219 8.219s3.681 8.219 8.219 8.219 8.219-3.681 8.219-8.219c0-4.537-3.681-8.219-8.219-8.219zM16 21.331c-2.944 0-5.331-2.387-5.331-5.331s2.387-5.331 5.331-5.331c2.944 0 5.331 2.387 5.331 5.331s-2.387 5.331-5.331 5.331z"
+              ></path>
+              <path
+                fill="rgb(146, 32, 8)"
+                d="M26.462 7.456c0 1.060-0.859 1.919-1.919 1.919s-1.919-0.859-1.919-1.919c0-1.060 0.859-1.919 1.919-1.919s1.919 0.859 1.919 1.919z"
+              ></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- jquery -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <!-- bootstrap4.6.0 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://unpkg.com/moment-lunar@0.0.4/moment-lunar.min.js"></script>
+
+    <!-- menu js外掛-->
+    <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script>
+    <script>
+      // navbar 藏
+      let scrollLast = 0;
+
+      $(window).scroll(function () {
+        console.log("scoll top", $(this).scrollTop());
+        let scrollNow = $(this).scrollTop();
+
+        if (scrollNow <= 300) {
+          $(".navbar").removeClass("hide_nav");
+        } else {
+          if (scrollLast < scrollNow) {
+            // 往下
+            console.log("往下");
+            $(".navbgcolor").addClass("hide_nav");
+          } else {
+            // 往上
+            console.log("往上");
+            $(".navbgcolor").removeClass("hide_nav");
+          }
+        }
+        scrollLast = scrollNow;
+      });
+
+      //  錨點
+      function getPosition(element) {
+        var x = 0;
+        var y = 0;
+        while (element) {
+          // x += element.offsetLeft - element.scrollLeft + element.clientLeft;
+          y += element.offsetTop - element.scrollTop + element.clientTop;
+          element = element.offsetParent;
+        }
+        return {
+          x: x,
+          y: y,
+        };
+      }
+      $("#navberLogoFast").click(function () {
+        var elem = document.querySelector("#page1_pot");
+        var position_point = getPosition(elem);
+        window.scrollTo({
+          top: position_point.y,
+          behavior: "smooth",
+        });
+      });
+
+      $("#menu01").click(function () {
+        var elem = document.querySelector("#page2_pot");
+        var position_point = getPosition(elem);
+        window.scrollTo({
+          top: position_point.y,
+          behavior: "smooth",
+        });
+      });
+      $("#menu02").click(function () {
+        var elem = document.querySelector("#page3_pot");
+        var position_point = getPosition(elem);
+        window.scrollTo({
+          top: position_point.y,
+          behavior: "smooth",
+        });
+      });
+      $("#menu03").click(function () {
+        var elem = document.querySelector("#page4_pot");
+        var position_point = getPosition(elem);
+        window.scrollTo({
+          top: position_point.y,
+          behavior: "smooth",
+        });
+      });
+      $("#menu04").click(function () {
+        var elem = document.querySelector("#page5_pot");
+        var position_point = getPosition(elem);
+        window.scrollTo({
+          top: position_point.y,
+          behavior: "smooth",
+        });
+      });
+
+      // ~~~~~幻燈片~~~~~
+
+      // 宣告一個變數來儲存現在的頁數   自動播放用
+      // let 作用該區域 為Scope 全域變數
+      // 讓 頁數初始值為0
+      let page = 0;
+
+      // 在進入畫面初始 使白色快捷 顯示在.eq頁面運作
+      $(".slider-dots li")
+        .eq(page)
+        .css("background", "#fff")
+        .siblings()
+        .css("background", "transparent");
+
+      //.hover 白色快捷 後運作
+      $(".slider-dots li").hover(function () {
+        //頁數 = 索引值
+        page = $(this).index();
+
+        console.log("測試this", $(this));
+        console.log($(this).index());
+        // $(this)代名詞= 被hover的li
+        //  this可用來延續 該動作繼續 代替表示
+        // .siblings自己以外的元素   背景透明
+        $(this)
+          .css("background", "#fff")
+          .siblings()
+          .css("background", "transparent");
+
+        //  $(this).index()讀取索引值後 乘* -100 + '%'
+        $(".img-wrap").css("left", $(this).index() * -100 + "%");
+      });
+
+      // 範例 .index取得目前符合條件的選擇器是第幾個 (索引值)
+      $("li").click(function () {
+        // 連動上方this選擇該物件
+        console.log($(this).index());
+      });
+
+      // js es6 的 Function寫法, 俗稱箭頭函式 () =>
+      // setInterval 固定延遲了某段時間後 才去執行(不斷循環)
+      setInterval(() => {
+        //公式
+        page = page + 1;
+
+        // 讓頁數能夠重製歸0 迴圈   防 頁數總數為5 超過5以上會無法重製作用
+        if (page > 4) {
+          page = 0;
+        }
+
+        // 讓頁數 上方的索引值 導入公式運作 達到圖片自動輪播作用
+        $(".img-wrap").css("left", page * -100 + "%");
+        console.log("page =", page);
+
+        // 白色方塊快捷 寫入函式內讓 白色快捷 與 圖片能夠同步作用
+        // .eq選取第N個
+        $(".slider-dots li")
+          .eq(page)
+          .css("background", "#fff")
+          .siblings()
+          .css("background", "transparent");
+
+        // 3000 表示 3000毫秒 = 3秒間隔
+      }, 3000);
+
+      // menu菜單
+      let container_1 = document.querySelector(".container_1");
+      let left = document.querySelector(".left-side");
+      let right = document.querySelector(".right-side");
+      let center = document.querySelector(".center");
+      let state = "closed";
+
+      container_1.onclick = function () {
+        let tl = gsap.timeline();
+        if (state == "closed") {
+          right.style.transform = "rotateY(-20deg)";
+          state = "half";
+          tl.set(".center-content", { opacity: 0 });
+          return state;
+        } else if (state == "half") {
+          left.style.transform = "rotateY(20deg)";
+          state = "open";
+          tl.to(".center-content", 1, { opacity: 1 });
+          return state;
+        } else {
+          right.style.transform = "rotateY(-180deg)";
+          left.style.transform = "rotateY(180deg)";
+          tl.set(".center-content", { opacity: 0 });
+          state = "closed";
+          return state;
+        }
+      };
+
+      // page3 定位
+      let navTop = $(".page3_ain").offset().top;
+
+      $(window).scroll(function () {
+        // console.log('scroll top', $(this).scrollTop())
+        let elem = document.querySelector(".move1");
+        let position_point = getPosition(elem);
+
+        let elem2 = document.querySelector(".move2");
+        let position_point1 = getPosition(elem2);
+
+        console.log("hi top", $(this).scrollTop());
+
+        let scrollTop = $(this).scrollTop();
+        console.log("navTop", navTop);
+        console.log("scrollTop", scrollTop);
+
+        // remove 移除
+        if (scrollTop < position_point.y) {
+          let animate = "animate__animated animate__fadeInUp";
+          let animate1 = "animatemo";
+          $(".page3_ain").removeClass(animate).css("opacity", "0");
+          $(".page3_ain > .page3_bigcard_img").removeClass(animate1);
+          $(".page3_ain2").removeClass(animate).css("opacity", "0");
+          $(".page3_ain2 > .page3_bigcard_img").removeClass(animate1);
+        }
+        if (scrollTop < position_point1.y) {
+          let animate = "animate__animated animate__fadeInUp";
+          $(".cardain").removeClass(animate).css("opacity", "0");
+        }
+
+        // 到達位置add 動畫 P
+        if (scrollTop > position_point.y + 200) {
+          //  add
+          let animate = "animate__animated animate__fadeInUp";
+          $(".page3_ain").addClass(animate).css("opacity", "1");
+        }
+        // 到達位置add 動畫 圖
+        if (scrollTop > position_point.y + 400) {
+          let animate1 = "animatemo";
+          $(".page3_ain > .page3_bigcard_img").addClass(animate1);
+        }
+
+        // 到達位置add 動畫 T
+        if (scrollTop > position_point.y + 600) {
+          //  add
+          let animate = "animate__animated animate__fadeInUp";
+          $(".page3_ain2").addClass(animate).css("opacity", "1");
+        }
+        // 到達位置add 動畫 圖
+        if (scrollTop > position_point.y + 700) {
+          let animate1 = "animatemo";
+          $(".page3_ain2 > .page3_bigcard_img").addClass(animate1);
+        }
+
+        if (scrollTop > position_point1.y) {
+          let animate = "animate__animated animate__fadeInUp";
+          $(".cardain").addClass(animate).css("opacity", "1");
+        }
+      });
+
+      // 日期篩選
+      var today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth() + 1;
+      var yyyy = today.getFullYear();
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+      today = yyyy + "-" + mm + "-" + dd;
+      $("#nowDoday").attr("min", today);
+
+      function check_input() {
+        let isPass = true;
+      }
+
+      // 快速輸入
+      var fastData = new Date();
+      $("#buttonFast").click(function () {
+        $("#fastName").val("資策會");
+        $("#fastPhone").val("(02)-6631-6666");
+        $("#fastTime").val("17:00");
+        $("#fastPeople").val("4人");
+        $("#nowDoday").val(today);
+      });
+    </script>
+  </body>
+</html>

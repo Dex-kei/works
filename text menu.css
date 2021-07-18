@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+@media  (min-width:992px) {
+        
+        :root {
+            --color-1: orange;
+            --color-2: #105fef;
+            --grey-1: #1F1F1F;
+            --grey-2: #bbb;
+            --grey-3: #ccc;
+            --font-1: "Roboto", sans-serif;
+        }
+
+        .menuopen {
+            overflow: hidden;
+            padding: 40px;
+        }
+
+        
+
+        .container_1 {
+            display: flex;
+            margin: 0px auto;
+            background-color: transparent;
+            width: 100%;
+            max-width: 750px;
+            height: 475px;
+            perspective: 1000px;
+            font-family: var(--font-1);
+            cursor: pointer;
+        }
+
+        .center {
+            background: white;
+            width: 50%;
+            height: 100%;
+            box-shadow: 0px 0px 20px #bbb;
+            overflow: hidden;
+        }
+
+        .left-side,
+        .right-side {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            display: inline-block;
+            background: white;
+            height: 100%;
+        }
+
+        .front,
+        .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        .front {
+            color: black;
+        }
+
+        .back {
+            color: white;
+            background: white;
+            transform: rotateY(180deg);
+        }
+
+        .left-side {
+            transform-origin: right;
+            transform: rotateY(180deg);
+        }
+
+        .right-side {
+            transform-origin: left;
+            transform: rotateY(-180deg);
+        }
+
+        .right-side .back {
+            background: rgb(146, 32, 8);
+            overflow: hidden;
+        }
+
+        .right-side .content {
+            position: relative;
+        }
+
+        .right-side .right-image {
+            width: 100%;
+            height: 100%;
+            
+            clip-path: polygon(0 0, 100% 0%, 100% 60%, 30% 90%, 0 50%);
+        }
+
+        .right-side .back .bottom {
+            height: 100%;
+            width: 100%;
+            background: rgb(249, 237, 220);
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            clip-path: polygon(0 0, 100% 45%, 100% 100%, 0 100%);
+            padding-left: 8px;
+            padding-top: 30%;
+            text-align: left;
+            font-weight: 900;
+        }
+
+        .right-side .back .text {
+            color: var(--grey-1);
+            font-size: 25px;
+        }
+
+        .right-side .back .highlight {
+            color: rgb(146, 32, 8);
+            font-size: 30px;
+            font-style: italic;
+        }
+
+        .right-side .back .text:nth-child(3) {
+            width: 25%;
+            padding-bottom: 4px;
+            border-bottom: 5px solid rgb(146, 32, 8);
+        }
+
+        .right-side .back .blurb {
+            color: var(--grey-1);
+            font-weight: 100;
+            font-size: 13px;
+            padding: 8px 0px;
+        }
+
+
+        .left-side .back .content {
+            background: rgb(249, 237, 220);
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .left-side .back .left-image {
+            width: 100%;
+            height: auto;
+            clip-path: polygon(0 0, 100% 0%, 100% 75%, 0 50%);
+        }
+
+        .left-side .back .stuff {
+            height: 95%;
+            width: 90%;
+            border: 15px solid orange;
+            margin: 5%;
+            padding: 10px;
+            position: absolute;
+            top: 0px;
+            text-align: left;
+            padding-top: 75%;
+        }
+
+        .left-side .back .stuff div:nth-child(1) {
+            font-size: 22px;
+            color: var(--grey-1);
+        }
+
+        .left-side .back .stuff div:nth-child(2) {
+            font-size: 25px;
+            color: black;
+            font-weight: 900;
+            border-bottom: 5px solid rgb(146, 32, 8);
+        }
+
+        .left-side .back .stuff p {
+            margin-top: 5%;
+            color: var(--grey-1);
+            font-size: 14px;
+        }
+
+        .left-side .front .content {
+            height: 100%;
+        }
+
+        .left-side .front .part-one {
+            height: 32%;
+            padding: 15px;
+           
+        }
+
+        .left-side .front .part-two {
+            background: rgb(249, 237, 220);
+            padding: 10% 15px;
+            height: 100%;
+            clip-path: polygon(0 0%, 50% 0, 100% 12%, 100% 100%, 0% 100%)
+        }
+
+        .left-side .front .part-two p {
+            color: black;
+        }
+
+        .left-side .front h1,
+        .center h1 {
+            color: rgb(146, 32, 8);
+            margin: 0px;
+            font-size: 15px
+        }
+
+        .left-side .front p,
+        .center p {
+            margin: 0px;
+            font-size: 13px;
+        }
+
+        .center .center-content {
+            height: 100%;
+            opacity: 0;
+        }
+
+        .center .part-one {
+            padding: 10px;
+            height: 35.5%;
+        }
+
+        .center .part-two {
+            padding: 10px;
+            height: 75%;
+            background: rgb(249, 237, 220);
+            clip-path: polygon(-45% 0, 100% 36%, 100% 100%, 0% 100%);
+        }
+
+        .right-side .front {
+            background: white;
+            height: 100%;
+            width: 100%;
+        }
+
+        .right-side .front .right-image {
+            clip-path: polygon(0 0, 0 90%, 100% 58%, 100% 0);
+        }
+
+        .right-side .front .part-two {
+            height: 100%;
+            width: 100%;
+        }
+
+        .right-side .front .part-two .stuff {
+            width: 250px;
+            margin-top: -60%;
+            height: 300px;
+            background: rgb(249, 237, 220);
+            clip-path: polygon(0% 46%, 0 100%, 100% 100%, 100% 10%);
+            padding: 14px 10px 0px 5px;
+        }
+
+        .right-side .front .part-two h1 {
+            padding-top: 60%;
+            margin: 0px;
+            font-size: 20px;
+            color: rgb(146, 32, 8);
+        }
+
+        .right-side .front .part-two p {
+            color: black;
+            margin: 0px;
+            font-size: 13px;
+        }
+        .fontcolorblack p{
+            color: black;
+        }
+    }
